@@ -1,0 +1,5 @@
+logs
+*.log
+dist
+node_modules
+.lock-wscript
