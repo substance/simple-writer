@@ -1,30 +1,22 @@
 import {
-  Component, ProseEditor,
-  ProseEditorConfigurator, DocumentSession
+  ProseEditor, Configurator, DocumentSession
 } from 'substance'
 
-import AppPackage from './AppPackage'
 import fixture from './fixture'
+import SimpleWriterPackage from './src/simple-writer/SimpleWriterPackage'
 
-class App extends Component {
-  render($$) {
-    var el = $$('div').addClass('sc-app')
-    el.append($$(ProseEditor, {
-      documentSession: this.props.documentSession,
-      configurator: this.props.configurator
-    }))
-    return el
-  }
-}
 
-var configurator = new ProseEditorConfigurator().import(AppPackage);
+let cfg = new Configurator()
+cfg.import(SimpleWriterPackage)
+
 window.onload = function() {
-  // Creates a ProseArticle based on the ProseEditorConfig
-  var doc = configurator.createArticle(fixture);
-  var documentSession = new DocumentSession(doc);
+  // Creates a ProseArticle based on the config
+  let importer = cfg.createImporter('html')
+  let doc = importer.importDocument(fixture)
+  let documentSession = new DocumentSession(doc)
 
-  App.mount({
+  ProseEditor.mount({
     documentSession: documentSession,
-    configurator: configurator
+    configurator: cfg
   }, document.body)
-};
+}

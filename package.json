@@ -1,12 +1,11 @@
 {
   "name": "substance-starter",
-  "description": "Substance example editor",
+  "description": "Reference implementation for a custom Substance editor",
   "dependencies": {
     "lodash": "^4.14.1",
     "substance": "substance/substance#develop"
   },
   "devDependencies": {
-    "eslint": "^3.2.2",
     "font-awesome": "4.5.0",
     "substance-bundler": "*"
   },

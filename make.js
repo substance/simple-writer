@@ -12,7 +12,7 @@ b.task('assets', function() {
 
 // this optional task makes it easier to work on Substance core
 b.task('substance', function() {
-  b.make('substance', 'clean', 'css', 'browser:umd')
+  b.make('substance', 'clean', 'css', 'browser')
   b.copy('node_modules/substance/dist', './dist/substance')
 })
 
