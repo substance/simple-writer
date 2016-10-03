@@ -1,0 +1,13 @@
+.sc-comment {
+  background: rgba(234, 231, 35, 0.5);
+}
+
+.sc-edit-comment-tool > * {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.sc-edit-comment-tool > input {
+  width: 400px;
+  background: #F5F391;
+}

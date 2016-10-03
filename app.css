@@ -5,4 +5,9 @@
 @import './substance/substance-pagestyle.css';
 /* Using url here, so font-awesome does not get bundled. */
 @import url('./font-awesome/css/font-awesome.min.css');
+/* comment */
+@import './src/comment/_comment.css';
+/* simple-writer*/
+@import './src/simple-writer/_simple-writer.css';
+@import './src/simple-writer/_simple-writer-overlay-tools.css';
 body { overflow: hidden; }

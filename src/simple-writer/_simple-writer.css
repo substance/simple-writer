@@ -1,0 +1,11 @@
+.sc-simple-writer {}
+.sc-simple-writer .sc-container-editor {
+  padding:  var(--default-padding);
+}
+/* Add padding to each child except last one */
+.sc-simple-writer .sc-container-editor > * + * {
+  padding-top:  var(--default-padding);
+}
+.sc-simple-writer .sc-toolbar {
+  border-bottom: 1px solid  var(--border-color);
+}

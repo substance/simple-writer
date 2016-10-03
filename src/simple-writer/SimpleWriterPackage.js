@@ -5,6 +5,7 @@ import {
 } from 'substance'
 
 import BodyPackage from '../body/BodyPackage'
+import CommentPackage from '../comment/CommentPackage'
 import SimpleHTMLImporter from './SimpleHTMLImporter'
 
 export default {
@@ -16,13 +17,19 @@ export default {
       defaultTextType: 'paragraph'
     })
 
-    // core nodes
+    // BasePackage provides core functionalities, such as undo/redo
+    // and the SwitchTextTypeTool
+    // However, you could import those functionalities individually too
+    // if you need more control
     config.import(BasePackage)
+
+    // core nodes
     config.import(ParagraphPackage)
     config.import(HeadingPackage)
     config.import(StrongPackage, {toolTarget: 'annotations'})
     config.import(EmphasisPackage, {toolTarget: 'annotations'})
     config.import(LinkPackage, {toolTarget: 'annotations'})
+    config.import(CommentPackage, {toolTarget: 'annotations'})
 
     // custom nodes
     config.import(BodyPackage)

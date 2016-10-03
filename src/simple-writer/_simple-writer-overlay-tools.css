@@ -1,0 +1,32 @@
+.sc-simple-writer-overlay-tools {}
+
+.sc-simple-writer-overlay-tools::before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4px 8px 4px;
+  border-color: transparent transparent #3787df transparent;
+}
+
+.sc-simple-writer-overlay-tools > .se-active-tools {
+  border-radius: 5px;
+  background: #3787df;
+  padding: 5px;
+}
+
+.sc-simple-writer-overlay-tools > .se-active-tools > * {
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.sc-simple-writer-overlay-tools.sm-comment-style::before {
+  border-color: transparent transparent #F5F391 transparent;
+}
+
+.sc-simple-writer-overlay-tools.sm-comment-style > .se-active-tools {
+  background: #F5F391;
+}

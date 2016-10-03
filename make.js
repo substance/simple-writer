@@ -6,7 +6,7 @@ b.task('clean', function() {
 
 // copy assets
 b.task('assets', function() {
-  b.copy('packages/**/*.css', './dist/')
+  b.copy('src/**/*.css', './dist/')
   b.copy('node_modules/font-awesome', './dist/font-awesome')
 })
 
