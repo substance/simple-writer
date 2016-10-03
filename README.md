@@ -37,6 +37,6 @@ The following files play a crucial role in the SimpleWriter implementation:
 - Create a simple Highlight node type to emphasize parts of the text with a yellow background. Serialize as `<span data-type="highlight">...</span>` Tip: Look at existing implementations such as Strong. (easy)
 - Create a new text type FancyParagraph, that works like a regular paragraph, just with different styles. Serialize as `<p data-type="fancy">...</p>` (easy)
 - Create a simple Person node type with properties `firstname`, `lastname`, which are editable via regular input elements. Look at [Input Example](https://github.com/substance/examples/blob/v1.0.0-beta.5/input) as a reference implementation. Create a tool that allows insertion of Person nodes into the document (as a block element). Serialize as `<div data-type="person" data-firstname="John" data-lastname="Doe"></div>`. (medium)
-- Create new Alien node type that can be inserted inside the text
+- Create new Monster node type that can be inserted inside the text. See [InlineNode example](https://github.com/substance/examples/blob/v1.0.0-beta.5/inline-node) as a reference implementation. Render a monster as small image that appears in the text. Bonus points: Allow different monster types and provide UI to change the moster type. Render a different image for each monster type. (medium)
 
 When you've completed your homework, please submit an issue containing the URL to your source code. We are happy to link them as possible solutions for others to check.
