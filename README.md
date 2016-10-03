@@ -16,19 +16,20 @@ And navigate to `http://localhost:5555`.
 
 You goal should be to read and understand all the code in this repository. And change it. You'll soon be ready to build your own completely custom web editor.
 
-Here are some pointers on how SimpleWriter is structured.
+Here are some pointers on how SimpleWriter is structured:
 
 - [`lib/simple-writer`](lib/simple-writer) - The editor, realized as a package
 - [`lib/body`](lib/body) - Maps an HTML body element to a Substance container node in the editor
 - [`lib/comment`](lib/comment) - A comment implementation that extends the base editor
 - [`app`](app) - App that creates a SimpleWriter instance (contains index.html, app.js and app.css)
 
-The following files should be of your interest.
+The following files play a crucial role in the SimpleWriter implementation:
 
 - [`lib/simple-writer/SimpleWriterPackage`](lib/simple-writer/SimpleWriterPackage) - Provides a default configuration for SimpleWriter. We import core functionality from Substance such as the base package (undo,redo, text type switcher) and core node types paragraph, strong, emphasis. Keep in mind, that often it makes sense to implement them yourself, so you can control literally every aspect, such as rendering and tools.
 - [`lib/simple-writer/SimpleWriter`](lib/simple-writer/SimpleWriter) - The editor, realized as a Substance Component. It sets up a toolbar and renders the Body component (editable area).
 - [`lib/simple-writer/SimpleHTMLImporter`](lib/simple-writer/SimpleHTMLImporter) - An importer implementation ready to read your document, as HTML.
 - [`lib/simple-writer/SimpleWriterOverlayTools`](lib/simple-writer/SimpleWriterOverlayTools) - Renders all tools that have `target: 'overlay'?`.
+- [`lib/comment/EditCommentTool`](lib/comment/EditCommentTool) - Comment editor displayed as an overlay tool.
 
 ## Homework
 
