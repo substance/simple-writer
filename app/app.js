@@ -1,6 +1,6 @@
 import { Configurator, DocumentSession } from 'substance'
-import SimpleWriter from './src/simple-writer/SimpleWriter'
-import SimpleWriterPackage from './src/simple-writer/SimpleWriterPackage'
+import SimpleWriter from '../lib/simple-writer/SimpleWriter'
+import SimpleWriterPackage from '../lib/simple-writer/SimpleWriterPackage'
 import fixture from './fixture'
 
 let cfg = new Configurator()

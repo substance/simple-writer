@@ -6,7 +6,8 @@ b.task('clean', function() {
 
 // copy assets
 b.task('assets', function() {
-  b.copy('src/**/*.css', './dist/')
+
+  b.copy('lib/**/*.css', './dist/')
   b.copy('node_modules/font-awesome', './dist/font-awesome')
 })
 
@@ -17,9 +18,9 @@ b.task('substance', function() {
 })
 
 b.task('build', ['clean', 'substance', 'assets'], function() {
-  b.copy('index.html', './dist/index.html')
-  b.copy('*.css', './dist/')
-  b.js('app.js', {
+  b.copy('app/index.html', './dist/index.html')
+  b.copy('app/app.css', './dist/app.css')
+  b.js('app/app.js', {
     external: ['substance'],
     commonjs: { include: ['node_modules/lodash/**'] },
     dest: './dist/app.js',
