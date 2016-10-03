@@ -18,7 +18,7 @@ You goal should be to read and understand all the code in this repository. And c
 
 Here are some pointers on how SimpleWriter is structured.
 
-- `[app](./app)` - contains index.html, app.js and app.css (the app)
+- [app](app) - contains index.html, app.js and app.css (the app)
 - `lib/simple-writer` - the editor, realized as a package
 - `lib/body` - maps an HTML body element to a Substance container node in the editor
 - `lib/comment` - a comment implementation that extends the base editor
