@@ -28,7 +28,7 @@ The following files play a crucial role in the SimpleWriter implementation:
 - [`lib/simple-writer/SimpleWriterPackage.js`](lib/simple-writer/SimpleWriterPackage.js) - Provides a default configuration for SimpleWriter. We import core functionality from Substance such as the base package (undo,redo, text type switcher) and core node types paragraph, strong, emphasis. Keep in mind, that often it makes sense to implement them yourself, so you can control literally every aspect, such as rendering and tools.
 - [`lib/simple-writer/SimpleWriter.js`](lib/simple-writer/SimpleWriter.js) - The editor, realized as a Substance Component. It sets up a toolbar and renders the Body component (editable area).
 - [`lib/simple-writer/SimpleHTMLImporter.js`](lib/simple-writer/SimpleHTMLImporter.js) - An importer implementation ready to read your document, as HTML.
-- [`lib/simple-writer/SimpleWriterOverlayTools.js`](lib/simple-writer/SimpleWriterOverlayTools.js) - Renders all tools that have `target: 'overlay'?`.
+- [`lib/simple-writer/SimpleWriterOverlayTools.js`](lib/simple-writer/SimpleWriterOverlayTools.js) - Renders all tools that have `target: 'overlay'`.
 - [`lib/comment/EditCommentTool.js`](lib/comment/EditCommentTool.js) - Comment editor displayed as an overlay tool.
 
 ## Homework
