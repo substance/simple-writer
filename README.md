@@ -25,11 +25,11 @@ Here are some pointers on how SimpleWriter is structured:
 
 The following files play a crucial role in the SimpleWriter implementation:
 
-- [`lib/simple-writer/SimpleWriterPackage`](lib/simple-writer/SimpleWriterPackage) - Provides a default configuration for SimpleWriter. We import core functionality from Substance such as the base package (undo,redo, text type switcher) and core node types paragraph, strong, emphasis. Keep in mind, that often it makes sense to implement them yourself, so you can control literally every aspect, such as rendering and tools.
-- [`lib/simple-writer/SimpleWriter`](lib/simple-writer/SimpleWriter) - The editor, realized as a Substance Component. It sets up a toolbar and renders the Body component (editable area).
-- [`lib/simple-writer/SimpleHTMLImporter`](lib/simple-writer/SimpleHTMLImporter) - An importer implementation ready to read your document, as HTML.
-- [`lib/simple-writer/SimpleWriterOverlayTools`](lib/simple-writer/SimpleWriterOverlayTools) - Renders all tools that have `target: 'overlay'?`.
-- [`lib/comment/EditCommentTool`](lib/comment/EditCommentTool) - Comment editor displayed as an overlay tool.
+- [`lib/simple-writer/SimpleWriterPackage`](lib/simple-writer/SimpleWriterPackage.js) - Provides a default configuration for SimpleWriter. We import core functionality from Substance such as the base package (undo,redo, text type switcher) and core node types paragraph, strong, emphasis. Keep in mind, that often it makes sense to implement them yourself, so you can control literally every aspect, such as rendering and tools.
+- [`lib/simple-writer/SimpleWriter`](lib/simple-writer/SimpleWriter.js) - The editor, realized as a Substance Component. It sets up a toolbar and renders the Body component (editable area).
+- [`lib/simple-writer/SimpleHTMLImporter`](lib/simple-writer/SimpleHTMLImporter.js) - An importer implementation ready to read your document, as HTML.
+- [`lib/simple-writer/SimpleWriterOverlayTools`](lib/simple-writer/SimpleWriterOverlayTools.js) - Renders all tools that have `target: 'overlay'?`.
+- [`lib/comment/EditCommentTool`](lib/comment/EditCommentTool.js) - Comment editor displayed as an overlay tool.
 
 ## Homework
 
