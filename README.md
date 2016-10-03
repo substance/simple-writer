@@ -14,7 +14,7 @@ And navigate to `http://localhost:5555`.
 
 ## Getting started
 
-You goal should be to read and understand all the code in this repository. And change it and see what happens. You are then ready to build your own editor.
+You goal should be to read and understand all the code in this repository. And change it. You'll soon be ready to build your own completely custom web editor.
 
 Here are some pointers on how SimpleWriter is structured.
 
@@ -26,9 +26,9 @@ Here are some pointers on how SimpleWriter is structured.
 The following files should be of your interest.
 
 - [`lib/simple-writer/SimpleWriterPackage`](lib/simple-writer/SimpleWriterPackage) - Provides a default configuration for SimpleWriter. We import core functionality from Substance such as the base package (undo,redo, text type switcher) and core node types paragraph, strong, emphasis. Keep in mind, that often it makes sense to implement them yourself, so you can control literally every aspect, such as rendering and tools.
-- [`lib/simple-writer/SimpleWriter`](lib/simple-writer/SimpleWriter) - The editor, realized as a Substance Component. It sets up a toolbar and editable area.
+- [`lib/simple-writer/SimpleWriter`](lib/simple-writer/SimpleWriter) - The editor, realized as a Substance Component. It sets up a toolbar and renders the Body component (editable area).
 - [`lib/simple-writer/SimpleHTMLImporter`](lib/simple-writer/SimpleHTMLImporter) - An importer implementation ready to read your document, as HTML.
-- [`lib/simple-writer/SimpleWriterOverlayTools`](lib/simple-writer/SimpleWriterOverlayTools) - Renders all tools that have target: 'overlay'. You have full control over the markup and styles here
+- [`lib/simple-writer/SimpleWriterOverlayTools`](lib/simple-writer/SimpleWriterOverlayTools) - Renders all tools that have `target: 'overlay'?`.
 
 ## Homework
 
@@ -38,4 +38,4 @@ The following files should be of your interest.
 - Create a simple Person node type with properties `firstname`, `lastname`, which are editable via regular input elements. Look at [Input Example](https://github.com/substance/examples/blob/v1.0.0-beta.4/input/app.js) as a reference implementation. Create a tool that allows insertion of Person nodes into the document (as a block element). Serialize as `<div data-type="person" data-firstname="John" data-lastname="Doe"></div>`. (medium)
 - Create new Alien node type that can be inserted inside the text
 
-When you've completed your homework, please submit an issue containing the URL to your solution. We are happy to link them as possible solutions for others to check.
+When you've completed your homework, please submit an issue containing the URL to your source code. We are happy to link them as possible solutions for others to check.
