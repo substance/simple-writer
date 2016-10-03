@@ -7,11 +7,12 @@ let cfg = new Configurator()
 cfg.import(SimpleWriterPackage)
 
 window.onload = function() {
-  // Creates a ProseArticle based on the config
+  // Import article from HTML markup
   let importer = cfg.createImporter('html')
   let doc = importer.importDocument(fixture)
+  // This is the data structure manipulated by the editor
   let documentSession = new DocumentSession(doc)
-
+  // Mount SimpleWriter to the DOM and run it.
   SimpleWriter.mount({
     documentSession: documentSession,
     configurator: cfg
