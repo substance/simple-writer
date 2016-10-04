@@ -14,7 +14,7 @@ And navigate to `http://localhost:5555`.
 
 ## Getting started
 
-You goal should be to read and understand all the code in this repository. And change it. You'll soon be ready to build your own completely custom web editor.
+Your goal should be to read and understand all the code in this repository. And change it. You'll soon be ready to build your own completely custom web editor.
 
 Here are some pointers on how SimpleWriter is structured:
 
