@@ -22,11 +22,3 @@
   margin-left: 2px;
   margin-right: 2px;
 }
-
-.sc-simple-writer-overlay-tools.sm-comment-style::before {
-  border-color: transparent transparent #F5F391 transparent;
-}
-
-.sc-simple-writer-overlay-tools.sm-comment-style > .se-active-tools {
-  background: #F5F391;
-}
