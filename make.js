@@ -6,20 +6,19 @@ b.task('clean', function() {
 
 // copy assets
 b.task('assets', function() {
-
-  b.copy('lib/**/*.css', './dist/')
+  b.css('./app/app.css', 'dist/app.css', { variables: true })
   b.copy('node_modules/font-awesome', './dist/font-awesome')
 })
 
 // this optional task makes it easier to work on Substance core
 b.task('substance', function() {
-  b.make('substance', 'clean', 'css', 'browser')
-  b.copy('node_modules/substance/dist', './dist/substance')
+  b.make('substance', 'clean', 'browser')
 })
 
-b.task('build', ['clean', 'substance', 'assets'], function() {
+b.task('build', ['clean', 'assets'], function() {
+  // Copy Substance
+  b.copy('node_modules/substance/dist', './dist/substance')
   b.copy('app/index.html', './dist/index.html')
-  b.copy('app/app.css', './dist/app.css')
   b.js('app/app.js', {
     external: ['substance'],
     commonjs: { include: ['node_modules/lodash/**'] },
