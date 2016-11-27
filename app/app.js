@@ -9,8 +9,8 @@ import SimpleWriterPackage from '../lib/simple-writer/SimpleWriterPackage'
   Configuration
 */
 const EXAMPLE_DOCUMENT_ID = 'example-doc'
-const DOCUMENT_SERVER_URL = '/api/documents'
-const WEBSOCKET_URL = 'ws://localhost:5555'
+const DOCUMENT_SERVER_URL = '/api/documents/'
+const WEBSOCKET_URL = 'ws://localhost:7777'
 
 /*
   Used to convert a document snapshot (JSON) into a real document instance
