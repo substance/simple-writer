@@ -48,8 +48,10 @@ window.onload = function() {
   documentClient.getDocument(EXAMPLE_DOCUMENT_ID, function(err, docRecord) {
     if (err) throw new Error(err)
 
-    let doc = jsonConverter.importDocument(docRecord.data)
+    let doc = cfg.createArticle()
+    jsonConverter.importDocument(doc, docRecord.data)
     let collabSession = new CollabSession(doc, {
+      configurator: cfg,
       documentId: EXAMPLE_DOCUMENT_ID,
       version: docRecord.version,
       collabClient: collabClient

@@ -1,15 +1,24 @@
 import {
-  DocumentEngine, DocumentStore, ChangeStore, DocumentServer, CollabServer
+  DocumentEngine, DocumentStore, ChangeStore, DocumentServer,
+  CollabServer, Configurator, JSONConverter, SnapshotStore
 } from 'substance'
 import express from 'express'
 import path from 'path'
 import http from 'http'
 import { Server as WebSocketServer } from 'ws'
+import SimpleWriterPackage from './lib/simple-writer/SimpleWriterPackage'
+// import htmlFixture from './app/fixture'
 
 const HOST = 'localhost'
 const PORT = 7777
 
 let app = express()
+
+/*
+  Setup configurator
+*/
+let configurator = new Configurator()
+configurator.import(SimpleWriterPackage)
 
 const DOCUMENT_STORE_SEED = {
   'example-doc': {
@@ -23,6 +32,32 @@ const CHANGE_STORE_SEED = {
   'example-doc': [{'first': 'change'}] // We can fake this change as we always fetch the snapshot for version 1
 }
 
+// TODO: HTML conversion does not work server-side it seems
+// let htmlImporter = configurator.createImporter('html')
+// let doc = htmlImporter.importDocument(htmlFixture)
+
+let doc = configurator.createArticle(function(tx) {
+  let body = tx.create({
+    id: 'body',
+    type: 'body'
+  })
+  tx.create({
+    id: 'p1',
+    type: 'paragraph',
+    content: 'Lorem ipsum'
+  })
+  body.show('p1')
+})
+
+let jsonConverter = new JSONConverter()
+let v1Snapshot = jsonConverter.exportDocument(doc)
+
+const SNAPSHOT_STORE_SEED = {
+  'example-doc': {
+    1: v1Snapshot
+  }
+}
+
 /*
   Setup stores
 
@@ -31,13 +66,16 @@ const CHANGE_STORE_SEED = {
 */
 let documentStore = new DocumentStore().seed(DOCUMENT_STORE_SEED)
 let changeStore = new ChangeStore().seed(CHANGE_STORE_SEED)
+let snapshotStore = new SnapshotStore().seed(SNAPSHOT_STORE_SEED)
 
 /*
   DocumentEngine operates on document store and change store
 */
 let documentEngine = new DocumentEngine({
+  configurator: configurator,
   documentStore: documentStore,
   changeStore: changeStore,
+  snapshotStore: snapshotStore,
   schemas: {
     'simple-article': {
       name: 'simple-article',
@@ -51,7 +89,7 @@ let documentEngine = new DocumentEngine({
   Create HTTP and Websocket Server
 */
 var httpServer = http.createServer();
-var wss = new WebSocketServer({ server: httpServer });
+var wss = new WebSocketServer({ server: httpServer })
 
 /*
   DocumentServer provides an HTTP API to access snapshots
@@ -60,7 +98,7 @@ var documentServer = new DocumentServer({
   documentEngine: documentEngine,
   path: '/api/documents'
 })
-documentServer.bind(app);
+documentServer.bind(app)
 
 /*
   CollabServer implements the server part of the collab protocol
@@ -84,9 +122,9 @@ var collabServer = new CollabServer({
   enhanceRequest: function(req, cb) {
     cb(null)
   }
-});
+})
 
-collabServer.bind(wss);
+collabServer.bind(wss)
 
 
 /*
