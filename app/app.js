@@ -1,4 +1,4 @@
-import { Configurator, DocumentSession } from 'substance'
+import { Configurator, EditorSession } from 'substance'
 import SimpleWriter from '../lib/simple-writer/SimpleWriter'
 import SimpleWriterPackage from '../lib/simple-writer/SimpleWriterPackage'
 import fixture from './fixture'
@@ -11,10 +11,11 @@ window.onload = function() {
   let importer = cfg.createImporter('html')
   let doc = importer.importDocument(fixture)
   // This is the data structure manipulated by the editor
-  let documentSession = new DocumentSession(doc)
+  let editorSession = new EditorSession(doc, {
+    configurator: cfg
+  })
   // Mount SimpleWriter to the DOM and run it.
   SimpleWriter.mount({
-    documentSession: documentSession,
-    configurator: cfg
+    editorSession: editorSession
   }, document.body)
 }
