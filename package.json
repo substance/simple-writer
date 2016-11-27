@@ -8,7 +8,9 @@
   "devDependencies": {
     "font-awesome": "4.5.0",
     "substance-bundler": "0.5.1",
-    "express": "*"
+    "express": "4.14.0",
+    "ws": "1.1.1",
+    "rollup": "*"
   },
   "scripts": {
     "bundle": "node make",

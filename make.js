@@ -12,10 +12,10 @@ b.task('assets', function() {
 
 // this optional task makes it easier to work on Substance core
 b.task('substance', function() {
-  b.make('substance', 'clean', 'browser')
+  b.make('substance', 'clean', 'browser', 'server')
 })
 
-b.task('build', ['clean', 'assets'], function() {
+b.task('build', ['substance', 'clean', 'assets'], function() {
   // Copy Substance
   b.copy('node_modules/substance/dist', './dist/substance')
   b.copy('app/index.html', './dist/index.html')
