@@ -13,7 +13,7 @@
     "rollup": "*"
   },
   "scripts": {
-    "bundle": "node make",
+    "build": "node make",
     "start": "node_modules/rollup/bin/rollup server.js -m inline --format cjs | node",
     "debug": "node_modules/rollup/bin/rollup server.js -m inline --format cjs > server.cjs.js && iron-node server.cjs.js"
   },

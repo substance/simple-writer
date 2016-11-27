@@ -164,5 +164,5 @@ httpServer.on('request', app);
 // E.g. on sandbox.substance.io we have established a reverse proxy
 // forwarding http+ws on notepad.substance.io to localhost:5001
 httpServer.listen(PORT, HOST, function() {
-  console.info('Listening on ' + httpServer.address().port);
+  console.info('Listening on ' + HOST + ':' + httpServer.address().port);
 })
