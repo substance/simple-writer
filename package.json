@@ -3,15 +3,16 @@
   "description": "Reference implementation for a custom Substance editor",
   "dependencies": {
     "lodash": "^4.14.1",
-    "substance": "1.0.0-beta.5.8"
+    "substance": "substance/substance#develop"
   },
   "devDependencies": {
     "font-awesome": "4.5.0",
-    "substance-bundler": "0.5.1"
+    "substance-bundler": "0.5.1",
+    "express": "*"
   },
   "scripts": {
     "bundle": "node make",
-    "start": "node make -s -w"
+    "start": "node_modules/rollup/bin/rollup server.js -m inline --format cjs | node"
   },
   "version": "1.0.0-beta.5"
 }
