@@ -29,12 +29,9 @@ const DOCUMENT_STORE_SEED = {
   }
 }
 
-
 let htmlImporter = configurator.createImporter('html')
 let doc = htmlImporter.importDocument(htmlFixture)
-debugger
 let initialChange = documentHelpers.getChangeFromDocument(doc)
-console.log('Show initial change', initialChange)
 const CHANGE_STORE_SEED = {
   'example-doc': [initialChange]
 }
