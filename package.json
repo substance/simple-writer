@@ -14,8 +14,7 @@
   },
   "scripts": {
     "build": "node make",
-    "start": "node_modules/rollup/bin/rollup server.js -m inline --format cjs | node",
-    "debug": "node_modules/rollup/bin/rollup server.js -m inline --format cjs > server.cjs.js && iron-node server.cjs.js"
+    "start": "node server.cjs.js "
   },
   "version": "1.0.0-beta.5"
 }

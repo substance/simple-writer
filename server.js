@@ -1,13 +1,14 @@
 import {
   DocumentEngine, DocumentStore, ChangeStore, DocumentServer,
-  CollabServer, Configurator, JSONConverter, SnapshotStore
+  CollabServer, Configurator, JSONConverter, SnapshotStore,
+  documentHelpers
 } from 'substance'
 import express from 'express'
 import path from 'path'
 import http from 'http'
 import { Server as WebSocketServer } from 'ws'
 import SimpleWriterPackage from './lib/simple-writer/SimpleWriterPackage'
-// import htmlFixture from './app/fixture'
+import htmlFixture from './app/fixture'
 
 const HOST = 'localhost'
 const PORT = 7777
@@ -28,26 +29,16 @@ const DOCUMENT_STORE_SEED = {
   }
 }
 
+
+let htmlImporter = configurator.createImporter('html')
+let doc = htmlImporter.importDocument(htmlFixture)
+debugger
+let initialChange = documentHelpers.getChangeFromDocument(doc)
+console.log('Show initial change', initialChange)
 const CHANGE_STORE_SEED = {
-  'example-doc': [{'first': 'change'}] // We can fake this change as we always fetch the snapshot for version 1
+  'example-doc': [initialChange]
 }
 
-// TODO: HTML conversion does not work server-side it seems
-// let htmlImporter = configurator.createImporter('html')
-// let doc = htmlImporter.importDocument(htmlFixture)
-
-let doc = configurator.createArticle(function(tx) {
-  let body = tx.create({
-    id: 'body',
-    type: 'body'
-  })
-  tx.create({
-    id: 'p1',
-    type: 'paragraph',
-    content: 'Lorem ipsum'
-  })
-  body.show('p1')
-})
 
 let jsonConverter = new JSONConverter()
 let v1Snapshot = jsonConverter.exportDocument(doc)
@@ -164,5 +155,5 @@ httpServer.on('request', app);
 // E.g. on sandbox.substance.io we have established a reverse proxy
 // forwarding http+ws on notepad.substance.io to localhost:5001
 httpServer.listen(PORT, HOST, function() {
-  console.info('Listening on ' + HOST + ':' + httpServer.address().port);
+  console.info('Listening on http://' + HOST + ':' + httpServer.address().port);
 })

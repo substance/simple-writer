@@ -15,7 +15,7 @@ b.task('substance', function() {
   b.make('substance', 'clean', 'browser', 'server')
 })
 
-b.task('build', ['substance', 'clean', 'assets'], function() {
+b.task('build-client', ['substance', 'clean', 'assets'], function() {
   // Copy Substance
   b.copy('node_modules/substance/dist', './dist/substance')
   b.copy('app/index.html', './dist/index.html')
@@ -28,8 +28,19 @@ b.task('build', ['substance', 'clean', 'assets'], function() {
   })
 })
 
+b.task('build-server', function() {
+  // Copy Substance
+  b.js('server.js', {
+    external: ['substance', 'express', 'ws'],
+    // commonjs: { include: ['node_modules/lodash/**'] },
+    dest: './server.cjs.js',
+    format: 'cjs',
+    moduleName: 'simple-writer'
+  })
+})
+
 // build all
-b.task('default', ['build'])
+b.task('default', ['build-client', 'build-server'])
 
 // starts a server when CLI argument '-s' is set
 b.setServerPort(5555)
