@@ -31,7 +31,7 @@ b.task('build-client', ['substance', 'clean', 'assets'], function() {
 b.task('build-server', function() {
   // Copy Substance
   b.js('server.js', {
-    external: ['substance', 'express', 'ws'],
+    external: ['substance', 'express', 'ws', 'path', 'http'],
     // commonjs: { include: ['node_modules/lodash/**'] },
     dest: './server.cjs.js',
     format: 'cjs',
