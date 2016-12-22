@@ -1,4 +1,4 @@
-import { DocumentServer, CollabServer, CollabServerConfigurator } from 'substance'
+import { DocumentServer, CollabServer, CollabServerConfigurator, series } from 'substance'
 import express from 'express'
 import path from 'path'
 import http from 'http'
@@ -10,17 +10,6 @@ let cfg = new CollabServerConfigurator()
 
 // Import server configuration
 cfg.import(SimpleWriterServerPackage)
-
-/*
-  Seeding. This is only necessary with our in-memory stores.
-*/
-let documentStore = cfg.getDocumentStore()
-let changeStore = cfg.getChangeStore()
-let snapshotStore = cfg.getSnapshotStore()
-
-documentStore.seed(seed.documentStore)
-changeStore.seed(seed.changeStore)
-snapshotStore.seed(seed.snapshotStore)
 
 /*
   Setup Express, HTTP and Websocket Server
@@ -60,7 +49,6 @@ app.use(function(err, req, res, next) {
   if (res.headersSent) {
     return next(err)
   }
-
   if (err.inspect) {
     // This is a SubstanceError where we have detailed info
     console.error(err.inspect())
@@ -68,7 +56,6 @@ app.use(function(err, req, res, next) {
     // For all other errors, let's just print the stack trace
     console.error(err.stack)
   }
-
   res.status(500).json({
     errorName: err.name,
     errorMessage: err.message || err.name
@@ -78,6 +65,23 @@ app.use(function(err, req, res, next) {
 // Delegate http requests to express app
 httpServer.on('request', app)
 
-httpServer.listen(cfg.getPort(), cfg.getHost(), function() {
+
+/*
+  Seeding. This is only necessary with our in-memory stores.
+*/
+function _runSeed(cb) {
+  console.info('Seeding database ...')
+  let changeStore = cfg.getChangeStore()
+  let snapshotStore = cfg.getSnapshotStore()
+  seed(changeStore, snapshotStore, cb)
+}
+
+function _startServer(cb) {
+  httpServer.listen(cfg.getPort(), cfg.getHost(), cb)
+}
+
+function _whenRunning() {
   console.info('Listening on http://' + cfg.getHost() + ':' + httpServer.address().port)
-})
+}
+
+series([_runSeed, _startServer], _whenRunning)
