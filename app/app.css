@@ -11,5 +11,4 @@
 @import '../lib/comment/_comment.css';
 /* simple-writer*/
 @import '../lib/simple-writer/_simple-writer.css';
-@import '../lib/simple-writer/_simple-writer-overlay-tools.css';
 body { overflow: hidden; }

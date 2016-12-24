@@ -1,6 +1,6 @@
 # SimpleWriter
 
-SimpleWriter is the official Substance starter example. It sets up a minimal environment for Substance editor development. Fork this code and create your own editor.
+SimpleWriter is the official Substance starter example. It includes a minimal [setup for realtime collaboration](./server.js). It sets up a minimal environment for Substance editor development. Fork this code and create your own editor.
 
 Read the [tutorial](http://substance.io/docs/beta5/your-first-editor.html).
 
@@ -20,6 +20,7 @@ Now install dependencies and start the dev environment.
 
 ```bash
 $ npm install
+$ npm run build
 $ npm start
 ```
 

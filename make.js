@@ -12,10 +12,10 @@ b.task('assets', function() {
 
 // this optional task makes it easier to work on Substance core
 b.task('substance', function() {
-  b.make('substance', 'clean', 'browser')
+  b.make('substance', 'clean', 'browser', 'server')
 })
 
-b.task('build', ['clean', 'assets'], function() {
+b.task('build-client', ['substance', 'clean', 'assets'], function() {
   // Copy Substance
   b.copy('node_modules/substance/dist', './dist/substance')
   b.copy('app/index.html', './dist/index.html')
@@ -28,8 +28,18 @@ b.task('build', ['clean', 'assets'], function() {
   })
 })
 
+b.task('build-server', function() {
+  b.js('server.js', {
+    external: ['substance', 'express', 'ws', 'path', 'http'],
+    // commonjs: { include: ['node_modules/lodash/**'] },
+    dest: './server.cjs.js',
+    format: 'cjs',
+    moduleName: 'simple-writer'
+  })
+})
+
 // build all
-b.task('default', ['build'])
+b.task('default', ['build-client', 'build-server'])
 
 // starts a server when CLI argument '-s' is set
 b.setServerPort(5555)
