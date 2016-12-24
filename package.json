@@ -5,6 +5,8 @@
     "lodash": "^4.14.1",
     "substance": "substance/substance#configurable-collab-server"
   },
+  "module": "index.es.js",
+  "jsnext:main": "index.es.js",
   "devDependencies": {
     "font-awesome": "4.5.0",
     "substance-bundler": "0.5.1",
@@ -16,5 +18,5 @@
     "build": "node make",
     "start": "node server.cjs.js "
   },
-  "version": "1.0.0-beta.5"
+  "version": "1.0.0-beta.6"
 }
