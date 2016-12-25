@@ -7,10 +7,10 @@ Read the [tutorial](http://substance.io/docs/beta5/your-first-editor.html).
 ## Install
 
 ```bash
-$ git clone https://github.com/substance/examples.git
+$ git clone https://github.com/substance/simple-writer.git
 ```
 
-Unless you want to make contributions to the lastest development version, please checkout the master branch which shows usage of the latest Substance release.
+Unless you want to make contributions to the latest development version, please checkout the master branch which shows usage of the latest Substance release.
 
 ```bash
 git checkout master
