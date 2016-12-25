@@ -1,4 +1,5 @@
 var b = require('substance-bundler');
+var resolve = require('rollup-plugin-node-resolve')
 
 b.task('clean', function() {
   b.rm('./dist')
@@ -6,22 +7,32 @@ b.task('clean', function() {
 
 // copy assets
 b.task('assets', function() {
-  b.css('./app/app.css', 'dist/app.css', { variables: true })
+  b.css('./app/app.css', './dist/app.css', { variables: true })
   b.copy('node_modules/font-awesome', './dist/font-awesome')
 })
 
 // this optional task makes it easier to work on Substance core
 b.task('substance', function() {
-  b.make('substance', 'clean', 'browser')
+  b.make('substance')
 })
 
-b.task('build', ['clean', 'assets'], function() {
+b.task('build-client', ['assets'], function() {
   // Copy Substance
   b.copy('node_modules/substance/dist', './dist/substance')
   b.copy('app/index.html', './dist/index.html')
+
+  // NOTE: this creates an single-file bundle including the app
+  // and the substance lib
   b.js('app/app.js', {
-    external: ['substance'],
-    commonjs: { include: ['node_modules/lodash/**'] },
+    plugins: [
+      resolve({
+        // consider the browser field in `package.json`
+        browser: true,
+        // use es6 entry points
+        jsnext: true,
+        module: true
+      }),
+    ],
     dest: './dist/app.js',
     format: 'umd',
     moduleName: 'app'
@@ -29,6 +40,8 @@ b.task('build', ['clean', 'assets'], function() {
 })
 
 // build all
+b.task('build', ['clean', 'substance', 'build-client'])
+
 b.task('default', ['build'])
 
 // starts a server when CLI argument '-s' is set
