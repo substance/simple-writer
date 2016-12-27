@@ -6,6 +6,8 @@ import { Server as WebSocketServer } from 'ws'
 import SimpleWriterServerPackage from './lib/server/SimpleWriterServerPackage'
 import seed from './seed'
 
+require('source-map-support').install()
+
 let cfg = new CollabServerConfigurator()
 
 // Import server configuration
