@@ -9,9 +9,7 @@
   "devDependencies": {
     "substance": "substance/substance#develop",
     "font-awesome": "4.5.0",
-    "substance-bundler": "0.5.1",
-    "rollup": "*",
-    "rollup-plugin-node-resolve": "*"
+    "substance-bundler": "0.7.2"
   },
   "scripts": {
     "build": "node make",
