@@ -10,6 +10,14 @@ Read the [tutorial](http://substance.io/docs/beta5/your-first-editor.html).
 $ git clone https://github.com/substance/simple-writer.git
 ```
 
+Note that by default you will see the development version. Be aware that
+you may encounter bugs. If you want to work on the latest release version,
+please check out the master branch.
+
+```bash
+git checkout master
+```
+
 Now install dependencies and start the dev environment.
 
 ```bash
