@@ -1,13 +1,10 @@
 {
   "name": "simple-writer",
   "description": "Reference implementation for a custom Substance editor",
-  "peerDependencies": {
-    "substance": "substance/substance#develop"
-  },
   "module": "index.es.js",
   "jsnext:main": "index.es.js",
   "devDependencies": {
-    "substance": "substance/substance#develop",
+    "substance": "substance/substance#027f181f43b22b8b1622e52412b6e407201f6f48",
     "font-awesome": "4.5.0",
     "substance-bundler": "0.7.2"
   },
