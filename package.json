@@ -4,7 +4,7 @@
   "module": "index.es.js",
   "jsnext:main": "index.es.js",
   "devDependencies": {
-    "substance": "substance/substance#027f181f43b22b8b1622e52412b6e407201f6f48",
+    "substance": "1.0.0-beta.6",
     "font-awesome": "4.5.0",
     "substance-bundler": "0.7.2"
   },
