@@ -1,5 +1,5 @@
 {
-  "name": "simple-writer",
+  "name": "substance-simple-writer",
   "description": "Reference implementation for a custom Substance editor",
   "module": "index.es.js",
   "jsnext:main": "index.es.js",
@@ -12,5 +12,13 @@
     "build": "node make",
     "start": "node make -s -w"
   },
-  "version": "1.0.0-beta.6"
+  "version": "1.0.0-beta.6",
+  "files": [
+    "app",
+    "dist",
+    "lib",
+    "*.css",
+    "*.js",
+    "package.json"
+  ]
 }
