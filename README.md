@@ -6,8 +6,13 @@ Read the [tutorial](http://substance.io/docs/beta5/your-first-editor.html).
 
 ## Install
 
+```bash
+$ git clone https://github.com/substance/simple-writer.git
 ```
-$ git clone https://github.com/substance/examples.git
+
+Now install dependencies and start the dev environment.
+
+```bash
 $ npm install
 $ npm start
 ```
