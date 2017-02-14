@@ -1,5 +1,1 @@
-export default `<html><body>
-  <h1>SimpleWriter</h1>
-  <p>This is the official <span data-type="comment" data-comment="A JavaScript library for web-based content editing">Substance</span> editor boilerplate example. Fork it, and create your own editor.</p>
-  <p>You can find the source code on <a href="http://github.com/substance/starter">Github</a>.</p>
-</body></html>`
+export default `<html><head></head><body></body><h1 data-id="heading-1">SimpleWriter</h1><p data-id="paragraph-1">This is the official <span data-id="comment-1" data-type="comment" data-comment="A JavaScript library for web-based content editing">Substance</span> editor boilerplate example. Fork it, and create your own editor.</p><p data-id="paragraph-2">You can find the source code on <a data-id="link-1" href="http://github.com/substance/simple-writer" title="hello">Github</a>.</p></html>`
