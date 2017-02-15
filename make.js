@@ -1,5 +1,4 @@
 let b = require('substance-bundler')
-let path = require('path')
 
 b.task('clean', function() {
   b.rm('./dist')
